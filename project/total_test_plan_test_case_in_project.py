@@ -24,6 +24,11 @@ for project in client.getProjects() :
             print(f"Test Suite /n {e}")
             test_case = client.getTestCasesForTestSuite(testsuiteid = e['id'])
             print(f"test case ---> {test_case}")
+            # client.createExecution(
+            #                        testProjectId = project['id'] , testPlanId = element['id'] , 
+            #                        testcaseId = e['id'] , userId = 'admin' , 
+            #                        notes = 'Test Notes ! :) '                       
+            #                        )
     
         print("     ******************** /Test Plans ********************  ") 
             

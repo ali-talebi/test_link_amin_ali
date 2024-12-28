@@ -10,7 +10,7 @@ client = testlink.TestLinkHelper().connect(testlink.TestlinkAPIClient)
 
 #getTestPlanByName
 #getUserByID
-# print(client.whatArgs('getRequirements'))
+print(client.whatArgs('getExecutionSet'))
 
 
 # for _ in client.getProjects() : 
@@ -53,4 +53,4 @@ client = testlink.TestLinkHelper().connect(testlink.TestlinkAPIClient)
 
 # client.createTestCase(**testcase_info)
 #print(client.getRequirements(testprojectid = 43 , testplanid = 72 ))
-print(client.getProjectTestPlans(1) )
+# print(client.getProjectTestPlans(1) )
