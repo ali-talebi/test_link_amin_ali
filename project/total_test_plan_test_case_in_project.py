@@ -19,16 +19,37 @@ for project in client.getProjects() :
     for element in client.getProjectTestPlans(project['id']) : 
         print("         /////////////////////////// Test Plans ///////////////////////////  ")
         print(element)
+        builds = client.getBuildsForTestPlan(testplanid = element['id'] )
+        platforms = client.getProjectPlatforms(testprojectid = project['id']  )
+        print("totoal Release Build " , builds )
+        print(f"total platform in test plan , {platforms}")
         result = client.getTestSuitesForTestPlan(element['id'])
         for e in result : 
             print(f"Test Suite /n {e}")
             test_case = client.getTestCasesForTestSuite(testsuiteid = e['id'])
             print(f"test case ---> {test_case}")
-            # client.createExecution(
+            # execution  = client.createExecution(
             #                        testProjectId = project['id'] , testPlanId = element['id'] , 
             #                        testcaseId = e['id'] , userId = 'admin' , 
-            #                        notes = 'Test Notes ! :) '                       
+            #                        notes = 'Test Notes ! :) ' ,                       
             #                        )
+            try : 
+                if len(builds) != 0  : 
+                    if len(platforms) != 0 : 
+                        for tsc in test_case : 
+                            for build in builds : 
+                                for key_plat in platforms.keys() : 
+                                    ere = client.reportTCResult(
+                                        testcaseid=int(tsc['id']),
+                                        testplanid=int(element['id']),
+                                        buildname=  build['name'] ,
+                                        status="b",
+                                        notes='some notes',
+                                        #user='admin'
+                                        platformname= key_plat  ##'Ununtu linux' #platforms['key_plat']['name'] # key_plat 
+                                    )
+                                    print(" ??????? Test Exec : " , ere)
+            except : continue 
     
         print("     ******************** /Test Plans ********************  ") 
             

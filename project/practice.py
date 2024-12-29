@@ -7,13 +7,17 @@ TESTLINK_API_PYTHON_SERVER_URL="http://195.201.231.223:8080/lib/api/xmlrpc/v1/xm
 TESTLINK_API_PYTHON_DEVKEY="2a40335f269615f7ebcef5af20141167" ## admin 
 client = testlink.TestLinkHelper().connect(testlink.TestlinkAPIClient)
 #tls = tlh.connect(testlink.TestlinkAPIClient)
+# p = []
+# for m in testlink.testlinkargs._apiMethodsArgs.keys():
+#     # print(m.lower())
+#     if 'Build' in m  : 
+#         p.append(m)
 
-for m in testlink.testlinkargs._apiMethodsArgs.keys():
-    print(m)
+# print(p)
 # show total args for each method 
 
 
-# print(client.whatArgs('createTestCase'))
+print(client.whatArgs('getProjectPlatforms'))
 
 # tls.getTestSuitesForTestPlan(testplanid = 1 , )
 # print(client.whatArgs('createTestProject'))
